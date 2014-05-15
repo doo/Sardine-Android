@@ -16,6 +16,7 @@
 
 package de.aflx.sardine.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.ProxySelector;
@@ -26,60 +27,39 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ch.boye.httpclientandroidlib.*;
+import ch.boye.httpclientandroidlib.auth.*;
+import ch.boye.httpclientandroidlib.client.CredentialsProvider;
+import ch.boye.httpclientandroidlib.client.HttpResponseException;
+import ch.boye.httpclientandroidlib.client.ResponseHandler;
+import ch.boye.httpclientandroidlib.client.methods.*;
+import ch.boye.httpclientandroidlib.client.params.AuthPolicy;
+import ch.boye.httpclientandroidlib.client.protocol.ClientContext;
+import ch.boye.httpclientandroidlib.conn.ClientConnectionManager;
+import ch.boye.httpclientandroidlib.conn.routing.HttpRoutePlanner;
+import ch.boye.httpclientandroidlib.conn.scheme.PlainSocketFactory;
+import ch.boye.httpclientandroidlib.conn.scheme.Scheme;
+import ch.boye.httpclientandroidlib.conn.scheme.SchemeRegistry;
+import ch.boye.httpclientandroidlib.conn.ssl.SSLSocketFactory;
+import ch.boye.httpclientandroidlib.entity.ByteArrayEntity;
+import ch.boye.httpclientandroidlib.entity.FileEntity;
+import ch.boye.httpclientandroidlib.entity.InputStreamEntity;
+import ch.boye.httpclientandroidlib.entity.StringEntity;
+import ch.boye.httpclientandroidlib.impl.auth.BasicScheme;
+import ch.boye.httpclientandroidlib.impl.client.AbstractHttpClient;
+import ch.boye.httpclientandroidlib.impl.client.DefaultHttpClient;
+import ch.boye.httpclientandroidlib.impl.conn.ProxySelectorRoutePlanner;
+import ch.boye.httpclientandroidlib.impl.conn.tsccm.ThreadSafeClientConnManager;
+import ch.boye.httpclientandroidlib.params.BasicHttpParams;
+import ch.boye.httpclientandroidlib.params.HttpConnectionParams;
+import ch.boye.httpclientandroidlib.params.HttpParams;
+import ch.boye.httpclientandroidlib.params.HttpProtocolParams;
+import ch.boye.httpclientandroidlib.protocol.BasicHttpContext;
+import ch.boye.httpclientandroidlib.protocol.ExecutionContext;
+import ch.boye.httpclientandroidlib.protocol.HTTP;
+import ch.boye.httpclientandroidlib.protocol.HttpContext;
+import ch.boye.httpclientandroidlib.util.VersionInfo;
 import de.aflx.sardine.util.QName;
-
-import org.apache.http.HttpEntity;
-//import org.apache.http.HttpHeaders;
-import org.apache.http.HttpException;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpRequestInterceptor;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.HttpVersion;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.AuthState;
-import org.apache.http.auth.Credentials;
-import org.apache.http.auth.NTCredentials;
-import org.apache.http.auth.UsernamePasswordCredentials;
-//import org.apache.http.client.AuthCache;
-import org.apache.http.client.CredentialsProvider;
-import org.apache.http.client.HttpResponseException;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpDelete;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpHead;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.client.params.AuthPolicy;
-import org.apache.http.client.protocol.ClientContext;
-//import org.apache.http.client.protocol.RequestAcceptEncoding;
-//import org.apache.http.client.protocol.ResponseContentEncoding;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.routing.HttpRoutePlanner;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.entity.InputStreamEntity;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.auth.BasicScheme;
-import org.apache.http.impl.client.AbstractHttpClient;
-//import org.apache.http.impl.client.BasicAuthCache;
-import org.apache.http.impl.client.DefaultHttpClient;
-//import org.apache.http.impl.client.DefaultRedirectStrategy;
-import org.apache.http.impl.conn.ProxySelectorRoutePlanner;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.ExecutionContext;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.protocol.HttpContext;
-import org.apache.http.util.VersionInfo;
 
 import de.aflx.sardine.DavResource;
 import de.aflx.sardine.Sardine;
@@ -624,6 +604,12 @@ public class SardineImpl implements Sardine {
 		this.put(url, entity, headers);
 	}
 
+    public void put(String url, File localFile, String contentType) throws IOException {
+        FileEntity content = new FileEntity(localFile);
+        //don't use ExpectContinue for repetable FileEntity, some web server (IIS for exmaple) may return 400 bad request after retry
+        this.put(url, content, contentType, false);
+    }
+
 	/**
      * put byte[] with header
      */
@@ -836,10 +822,10 @@ public class SardineImpl implements Sardine {
 	}
 
 	/**
-	 * Creates a new {@link org.apache.http.conn.scheme.SchemeRegistry} for
+	 * Creates a new {@link SchemeRegistry} for
 	 * default ports with socket factories.
 	 * 
-	 * @return a new {@link org.apache.http.conn.scheme.SchemeRegistry}.
+	 * @return a new {@link SchemeRegistry}.
 	 */
 	protected SchemeRegistry createDefaultSchemeRegistry() {
 		SchemeRegistry registry = new SchemeRegistry();

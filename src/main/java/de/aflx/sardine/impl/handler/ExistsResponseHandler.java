@@ -16,14 +16,13 @@
 
 package de.aflx.sardine.impl.handler;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
-
+import ch.boye.httpclientandroidlib.HttpResponse;
+import ch.boye.httpclientandroidlib.HttpStatus;
+import ch.boye.httpclientandroidlib.StatusLine;
 import de.aflx.sardine.impl.SardineException;
 
 /**
- * {@link org.apache.http.client.ResponseHandler} which checks wether a given resource exists.
+ * {@link ResponseHandler} which checks wether a given resource exists.
  *
  * @author mirko
  * @version $Id: ExistsResponseHandler.java 258 2011-05-30 17:50:04Z latchkey $

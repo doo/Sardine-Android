@@ -15,6 +15,6 @@
  */
 
 /**
- * Response handler with stauts code validation for {@link org.apache.http.client.HttpClient} implementation.
+ * Response handler with stauts code validation for {@link ch.boye.httpclientandroidlib.HttpClient} implementation.
  */
 package de.aflx.sardine.impl.handler;

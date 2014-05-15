@@ -16,29 +16,29 @@
 
 package de.aflx.sardine.impl.methods;
 
+import ch.boye.httpclientandroidlib.client.methods.HttpRequestBase;
+
 import java.net.URI;
 
-import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
-import org.apache.http.protocol.HTTP;
-
 /**
- * Simple class for making WebDAV <code>PROPPATCH</code> requests.
+ * Simple class for making WebDAV <code>COPY</code> requests. Assumes Overwrite = T.
  *
- * @version $Id: HttpPropPatch.java 290 2011-07-04 17:22:05Z latchkey $
+ * @version $Id: HttpCopy.java 287 2011-07-04 05:46:24Z dkocher@sudo.ch $
  */
-public class HttpPropPatch extends HttpEntityEnclosingRequestBase
+public class HttpCopy extends HttpRequestBase
 {
-	public static final String METHOD_NAME = "PROPPATCH";
+	public static final String METHOD_NAME = "COPY";
 
-	public HttpPropPatch(String url)
+	public HttpCopy(URI sourceUrl, URI destinationUrl)
 	{
-		this(URI.create(url));
+		this.setHeader("Destination", destinationUrl.toString());
+		this.setHeader("Overwrite", "T");
+		this.setURI(sourceUrl);
 	}
 
-	public HttpPropPatch(URI url)
+	public HttpCopy(String sourceUrl, String destinationUrl)
 	{
-		this.setURI(url);
-		this.setHeader("Content-Type", "text/xml" + HTTP.CHARSET_PARAM + HTTP.UTF_8.toLowerCase());
+		this(URI.create(sourceUrl), URI.create(destinationUrl));
 	}
 
 	@Override

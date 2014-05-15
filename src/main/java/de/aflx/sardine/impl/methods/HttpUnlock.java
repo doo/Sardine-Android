@@ -16,10 +16,10 @@
 
 package de.aflx.sardine.impl.methods;
 
-import java.net.URI;
+import ch.boye.httpclientandroidlib.client.methods.HttpRequestBase;
+import ch.boye.httpclientandroidlib.protocol.HTTP;
 
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.protocol.HTTP;
+import java.net.URI;
 
 /**
  * @version $Id: HttpUnlock.java 290 2011-07-04 17:22:05Z latchkey $

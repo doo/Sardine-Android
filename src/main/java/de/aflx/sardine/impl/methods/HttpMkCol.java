@@ -16,29 +16,29 @@
 
 package de.aflx.sardine.impl.methods;
 
-import org.apache.http.client.methods.HttpRequestBase;
+import ch.boye.httpclientandroidlib.client.methods.HttpEntityEnclosingRequestBase;
+import ch.boye.httpclientandroidlib.protocol.HTTP;
 
 import java.net.URI;
 
 /**
- * Simple class for making WebDAV <code>MOVE</code> requests.
+ * Simple class for making <code>MKCOL</code> requests.
  *
- * @version $Id: HttpMove.java 287 2011-07-04 05:46:24Z dkocher@sudo.ch $
+ * @version $Id: HttpMkCol.java 290 2011-07-04 17:22:05Z latchkey $
  */
-public class HttpMove extends HttpRequestBase
+public class HttpMkCol extends HttpEntityEnclosingRequestBase
 {
-	public static final String METHOD_NAME = "MOVE";
+	public static final String METHOD_NAME = "MKCOL";
 
-	public HttpMove(URI sourceUrl, URI destinationUrl)
+	public HttpMkCol(String url)
 	{
-		this.setHeader("Destination", destinationUrl.toString());
-		this.setHeader("Overwrite", "T");
-		this.setURI(sourceUrl);
+		this(URI.create(url));
 	}
 
-	public HttpMove(String sourceUrl, String destinationUrl)
+	public HttpMkCol(URI url)
 	{
-		this(URI.create(sourceUrl), URI.create(destinationUrl));
+		this.setURI(url);
+		this.setHeader("Content-Type", "text/xml" + HTTP.CHARSET_PARAM + HTTP.UTF_8.toLowerCase());
 	}
 
 	@Override

@@ -16,13 +16,13 @@
 
 package de.aflx.sardine.impl.handler;
 
-import org.apache.http.HttpResponse;
+import ch.boye.httpclientandroidlib.HttpResponse;
 
 import java.io.IOException;
 
 /**
- * {@link org.apache.http.client.ResponseHandler} which just executes the request and checks the answer is
- * in the valid range of {@link ValidatingResponseHandler#validateResponse(org.apache.http.HttpResponse)}.
+ * {@link ResponseHandler} which just executes the request and checks the answer is
+ * in the valid range of {@link ValidatingResponseHandler#validateResponse(HttpResponse)}.
  *
  * @author mirko
  * @version $Id: VoidResponseHandler.java 233 2011-05-24 11:55:15Z dkocher@sudo.ch $

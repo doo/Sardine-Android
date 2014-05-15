@@ -16,8 +16,8 @@
 
 package de.aflx.sardine.impl.io;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
+import ch.boye.httpclientandroidlib.HttpEntity;
+import ch.boye.httpclientandroidlib.HttpResponse;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -15,6 +15,6 @@
  */
 
 /**
- * I/O support {@link org.apache.http.client.HttpClient} implementation.
+ * I/O support {@link ch.boye.httpclientandroidlib.HttpClient} implementation.
  */
 package de.aflx.sardine.impl.io;
