@@ -21,9 +21,9 @@ import org.simpleframework.xml.Element;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -45,8 +45,8 @@ import org.simpleframework.xml.Element;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 //@XmlAccessorType(XmlAccessType.FIELD)
 //@XmlType(name = "", propOrder = {
@@ -55,38 +55,38 @@ import org.simpleframework.xml.Element;
 //@XmlRootElement(name = "prop")
 public class Prop {
 
-	@Element
-	private Resourcetype resourcetype;
-	@Element
-	private String creationdate;
-	@Element
-	private String getlastmodified;
-	@Element
-	private String getetag;
-	@Element (required = false)
-	private String getcontenttype;
-	
-	public Resourcetype getResourcetype() {
-		return resourcetype;
-	}
+    @Element (required = false)
+    private Resourcetype resourcetype;
+    @Element (required = false)
+    private String creationdate;
+    @Element (required = false)
+    private String getlastmodified;
+    @Element (required = false)
+    private String getetag;
+    @Element (required = false)
+    private String getcontenttype;
 
-	public String getCreationdate() {
-		return creationdate;
-	}
+    public Resourcetype getResourcetype() {
+        return resourcetype;
+    }
 
-	public String getGetlastmodified() {
-		return getlastmodified;
-	}
+    public String getCreationdate() {
+        return creationdate;
+    }
 
-	public String getGetetag() {
-		return getetag;
-	}
+    public String getGetlastmodified() {
+        return getlastmodified;
+    }
 
-	public String getGetcontenttype() {
-		return getcontenttype;
-	}
+    public String getGetetag() {
+        return getetag;
+    }
 
-	
+    public String getGetcontenttype() {
+        return getcontenttype;
+    }
+
+
     /*protected Creationdate creationdate;
     protected Displayname displayname;
     protected Getcontentlanguage getcontentlanguage;
@@ -98,16 +98,16 @@ public class Prop {
     protected Resourcetype resourcetype;
     protected Supportedlock supportedlock;*/
 //    @XmlAnyElement
-	@Element (required = false)
+    @Element (required = false)
     protected List<Element> any;
 
 /*    *//**
      * Gets the value of the creationdate property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Creationdate }
-     *     
+     *
      *//*
     public Creationdate getCreationdate() {
         return creationdate;
@@ -115,11 +115,11 @@ public class Prop {
 
     *//**
      * Sets the value of the creationdate property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Creationdate }
-     *     
+     *
      *//*
     public void setCreationdate(Creationdate value) {
         this.creationdate = value;
@@ -127,11 +127,11 @@ public class Prop {
 
     *//**
      * Gets the value of the displayname property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Displayname }
-     *     
+     *
      *//*
     public Displayname getDisplayname() {
         return displayname;
@@ -139,11 +139,11 @@ public class Prop {
 
     *//**
      * Sets the value of the displayname property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Displayname }
-     *     
+     *
      *//*
     public void setDisplayname(Displayname value) {
         this.displayname = value;
@@ -151,11 +151,11 @@ public class Prop {
 
     *//**
      * Gets the value of the getcontentlanguage property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Getcontentlanguage }
-     *     
+     *
      *//*
     public Getcontentlanguage getGetcontentlanguage() {
         return getcontentlanguage;
@@ -163,11 +163,11 @@ public class Prop {
 
     *//**
      * Sets the value of the getcontentlanguage property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Getcontentlanguage }
-     *     
+     *
      *//*
     public void setGetcontentlanguage(Getcontentlanguage value) {
         this.getcontentlanguage = value;
@@ -175,11 +175,11 @@ public class Prop {
 
     *//**
      * Gets the value of the getcontentlength property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Getcontentlength }
-     *     
+     *
      *//*
     public Getcontentlength getGetcontentlength() {
         return getcontentlength;
@@ -187,11 +187,11 @@ public class Prop {
 
     *//**
      * Sets the value of the getcontentlength property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Getcontentlength }
-     *     
+     *
      *//*
     public void setGetcontentlength(Getcontentlength value) {
         this.getcontentlength = value;
@@ -199,11 +199,11 @@ public class Prop {
 
     *//**
      * Gets the value of the getcontenttype property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Getcontenttype }
-     *     
+     *
      *//*
     public Getcontenttype getGetcontenttype() {
         return getcontenttype;
@@ -211,11 +211,11 @@ public class Prop {
 
     *//**
      * Sets the value of the getcontenttype property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Getcontenttype }
-     *     
+     *
      *//*
     public void setGetcontenttype(Getcontenttype value) {
         this.getcontenttype = value;
@@ -223,11 +223,11 @@ public class Prop {
 
     *//**
      * Gets the value of the getetag property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Getetag }
-     *     
+     *
      *//*
     public Getetag getGetetag() {
         return getetag;
@@ -235,11 +235,11 @@ public class Prop {
 
     *//**
      * Sets the value of the getetag property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Getetag }
-     *     
+     *
      *//*
     public void setGetetag(Getetag value) {
         this.getetag = value;
@@ -247,11 +247,11 @@ public class Prop {
 
     *//**
      * Gets the value of the getlastmodified property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Getlastmodified }
-     *     
+     *
      *//*
     public Getlastmodified getGetlastmodified() {
         return getlastmodified;
@@ -259,11 +259,11 @@ public class Prop {
 
     *//**
      * Sets the value of the getlastmodified property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Getlastmodified }
-     *     
+     *
      *//*
     public void setGetlastmodified(Getlastmodified value) {
         this.getlastmodified = value;
@@ -271,11 +271,11 @@ public class Prop {
 
     *//**
      * Gets the value of the lockdiscovery property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Lockdiscovery }
-     *     
+     *
      *//*
     public Lockdiscovery getLockdiscovery() {
         return lockdiscovery;
@@ -283,11 +283,11 @@ public class Prop {
 
     *//**
      * Sets the value of the lockdiscovery property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Lockdiscovery }
-     *     
+     *
      *//*
     public void setLockdiscovery(Lockdiscovery value) {
         this.lockdiscovery = value;
@@ -295,11 +295,11 @@ public class Prop {
 
     *//**
      * Gets the value of the resourcetype property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Resourcetype }
-     *     
+     *
      *//*
     public Resourcetype getResourcetype() {
         return resourcetype;
@@ -307,11 +307,11 @@ public class Prop {
 
     *//**
      * Sets the value of the resourcetype property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Resourcetype }
-     *     
+     *
      *//*
     public void setResourcetype(Resourcetype value) {
         this.resourcetype = value;
@@ -319,11 +319,11 @@ public class Prop {
 
     *//**
      * Gets the value of the supportedlock property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Supportedlock }
-     *     
+     *
      *//*
     public Supportedlock getSupportedlock() {
         return supportedlock;
@@ -331,11 +331,11 @@ public class Prop {
 
     *//**
      * Sets the value of the supportedlock property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Supportedlock }
-     *     
+     *
      *//*
     public void setSupportedlock(Supportedlock value) {
         this.supportedlock = value;
@@ -343,25 +343,25 @@ public class Prop {
 
     /**
      * Gets the value of the any property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getAny().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Element }
-     * 
-     * 
+     *
+     *
      */
     public List<Element> getAny() {
         if (any == null) {

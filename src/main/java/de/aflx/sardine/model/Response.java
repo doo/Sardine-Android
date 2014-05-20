@@ -14,6 +14,9 @@ package de.aflx.sardine.model;
 //import javax.xml.bind.annotation.XmlRootElement;
 //import javax.xml.bind.annotation.XmlType;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+
+import java.util.List;
 
 
 /**
@@ -59,8 +62,8 @@ public class Response {
     protected String href;
 	@Element (required = false)
     protected String status;
-	@Element
-    protected Propstat propstat;
+    @ElementList(inline = true)
+    protected List<Propstat> propstat;
 	@Element (required = false)
     protected Error error;
 	@Element (required = false)
@@ -134,10 +137,10 @@ public class Response {
      * {@link Propstat }
      */
     public Propstat getPropstat() {
-        if(propstat == null) {
-            propstat = new Propstat();
+        if(propstat == null || propstat.size() == 0) {
+            return new Propstat();
         }
-        return this.propstat;
+        return this.propstat.get(0);
     }
 
     /**
