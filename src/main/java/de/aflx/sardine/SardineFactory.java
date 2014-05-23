@@ -16,7 +16,7 @@ public class SardineFactory
 	 * Default begin() for when you don't need anything but no authentication
 	 * and default settings for SSL.
 	 */
-	public static Sardine begin()
+	public final Sardine begin()
 	{
 		return begin(null, null);
 	}
@@ -28,7 +28,7 @@ public class SardineFactory
 	 * @param username Use in authentication header credentials
 	 * @param password Use in authentication header credentials
 	 */
-	public static Sardine begin(String username, String password)
+	public final Sardine begin(String username, String password)
 	{
 		return begin(username, password, null);
 	}
@@ -38,7 +38,7 @@ public class SardineFactory
 	 * @param password Use in authentication header credentials
 	 * @param proxy	Proxy configuration
 	 */
-	public static Sardine begin(String username, String password, ProxySelector proxy)
+	public Sardine begin(String username, String password, ProxySelector proxy)
 	{
 		return new SardineImpl(username, password, proxy);
 	}
