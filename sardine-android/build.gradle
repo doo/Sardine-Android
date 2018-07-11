@@ -3,7 +3,7 @@ apply plugin: 'maven'
 
 def publishArtifactId = 'sardine'
 project.group = "io.scanbot"
-project.version = '1.0.0.4-SNAPSHOT'
+project.version = '1.0.0'
 
 android {
     compileSdkVersion 27
