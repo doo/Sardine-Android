@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+def publishArtifactId = 'sardine'
+project.group = "io.scanbot"
+project.version = '1.0.0'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api 'com.android.support:support-annotations:27.1.0'
+    api 'com.burgstaller:okhttp-digest:1.17'
+    api ('org.simpleframework:simple-xml:2.7.1') {
+        exclude module: 'stax'
+        exclude module: 'stax-api'
+        exclude module: 'xpp3'
+    }
+
+    testImplementation 'junit:junit:4.12'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            snapshotRepository(url: "http://nexus.scanbot.io/nexus/content/repositories/snapshots/") {
+                authentication(userName: project.getProperty('NEXUS_LOGIN'), password: project.getProperty('NEXUS_PASSWORD'))
+            }
+            repository(url: "http://nexus.scanbot.io/nexus/content/repositories/releases/") {
+                authentication(userName: project.getProperty('NEXUS_LOGIN'), password: project.getProperty('NEXUS_PASSWORD'))
+            }
+
+            pom.version = project.version
+            pom.artifactId = publishArtifactId
+            pom.groupId = project.group
+        }
+    }
+}
