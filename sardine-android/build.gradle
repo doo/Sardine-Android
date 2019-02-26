@@ -3,7 +3,7 @@ apply plugin: 'maven'
 
 def publishArtifactId = 'sardine'
 project.group = "io.scanbot"
-project.version = '1.0.0'
+project.version = '1.0.1'
 
 android {
     compileSdkVersion 27
@@ -26,7 +26,7 @@ android {
 
 dependencies {
     api 'com.android.support:support-annotations:27.1.0'
-    api 'com.burgstaller:okhttp-digest:1.17'
+    api 'com.burgstaller:okhttp-digest:1.18'
     api ('org.simpleframework:simple-xml:2.7.1') {
         exclude module: 'stax'
         exclude module: 'stax-api'
