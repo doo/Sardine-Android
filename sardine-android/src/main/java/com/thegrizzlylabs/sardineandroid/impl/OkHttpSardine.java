@@ -56,6 +56,7 @@ import javax.xml.namespace.QName;
 import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -69,7 +70,7 @@ public class OkHttpSardine implements Sardine {
     protected OkHttpClient client;
 
     public OkHttpSardine() {
-        this.client = new OkHttpClient.Builder().build();
+        this.client = new OkHttpClient.Builder().protocols(Collections.singletonList(Protocol.HTTP_1_1)).build();
     }
 
     public OkHttpSardine(OkHttpClient client) {
