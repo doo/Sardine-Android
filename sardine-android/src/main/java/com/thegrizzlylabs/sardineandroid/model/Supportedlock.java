@@ -39,7 +39,7 @@ import java.util.List;
 @Namespace(prefix = "D", reference = "DAV:")
 public class Supportedlock {
 
-    @ElementList(inline = true)
+    @ElementList(inline = true, required = false)
     private List<Lockentry> lockentry;
 
     /**
