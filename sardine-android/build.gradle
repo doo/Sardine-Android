@@ -26,8 +26,8 @@ android {
 
 dependencies {
     api 'com.android.support:support-annotations:27.1.0'
-    api 'com.burgstaller:okhttp-digest:1.18'
-    api ('org.simpleframework:simple-xml:2.7.1') {
+    api "com.burgstaller:okhttp-digest:2.0"
+    api('org.simpleframework:simple-xml:2.7.1') {
         exclude module: 'stax'
         exclude module: 'stax-api'
         exclude module: 'xpp3'
